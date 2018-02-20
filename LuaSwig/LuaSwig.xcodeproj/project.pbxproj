@@ -124,6 +124,7 @@
 		A14BFF79203B3A8500569B00 /* wrap_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrap_example.cpp; sourceTree = "<group>"; };
 		A1D27769203BC4E900A899D5 /* main.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = main.lua; path = "../../../../../Library/Developer/Xcode/DerivedData/Swig-fkynvpogqbehaaawzhfarzihrcjj/Build/Products/Debug/main.lua"; sourceTree = "<group>"; };
 		A1D2776A203BC57100A899D5 /* runme.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = runme.lua; path = "../../../../../Library/Developer/Xcode/DerivedData/Swig-fkynvpogqbehaaawzhfarzihrcjj/Build/Products/Debug/runme.lua"; sourceTree = "<group>"; };
+		A1D27786203C1B3500A899D5 /* example.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; path = example.i; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,8 +169,9 @@
 		A14BFF0B203B2CB800569B00 /* class */ = {
 			isa = PBXGroup;
 			children = (
-				A14BFF79203B3A8500569B00 /* wrap_example.cpp */,
 				A14BFF0C203B2CB800569B00 /* example.cpp */,
+				A1D27786203C1B3500A899D5 /* example.i */,
+				A14BFF79203B3A8500569B00 /* wrap_example.cpp */,
 				A14BFF0D203B2CB800569B00 /* example.h */,
 			);
 			path = class;

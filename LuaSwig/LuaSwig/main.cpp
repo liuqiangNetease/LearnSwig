@@ -12,8 +12,8 @@
 extern "C"
 {
 
-#include <lua-5.3.4/src/lualib.h>
-#include <lua-5.3.4/src/lauxlib.h>
+#include "lualib.h"
+#include "../LuaSwig/lua-5.3.4/src/lauxlib.h"
 }
 
 
