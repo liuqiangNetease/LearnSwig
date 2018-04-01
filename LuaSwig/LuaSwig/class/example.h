@@ -1,11 +1,18 @@
 /* File : example.h */
 #include <vector>
 
-namespace LQEngine
-{
+
     namespace  base
     {
-        
+//        class Test
+//        {
+////        public:
+////            static void addClick()
+////            {
+////                printf("Test::addClick() \n");
+////            }
+//            
+//        };
         class Shape {
         public:
             Shape() {
@@ -59,6 +66,6 @@ namespace LQEngine
         };
     }
     
-}
+
 
 

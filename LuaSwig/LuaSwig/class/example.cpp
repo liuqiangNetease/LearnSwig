@@ -5,8 +5,7 @@
 
 #define M_PI 3.14159265358979323846
 
-namespace LQEngine
-{
+
     namespace base
     {
         
@@ -76,4 +75,4 @@ namespace LQEngine
             return ptr;
         }
     }
-}
+
