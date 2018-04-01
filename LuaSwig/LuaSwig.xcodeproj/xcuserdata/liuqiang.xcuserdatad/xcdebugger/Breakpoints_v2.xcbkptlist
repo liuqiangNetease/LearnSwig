@@ -28,7 +28,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "3889"
-            endingLineNumber = "3889">
+            endingLineNumber = "3889"
+            landmarkName = "SWIG_init(lua_State* L)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -4,15 +4,17 @@
 
     namespace  base
     {
-//        class Test
-//        {
-////        public:
-////            static void addClick()
-////            {
-////                printf("Test::addClick() \n");
-////            }
-//            
-//        };
+        class Test
+        {
+        public:
+            int Add(int a, int b) {return a+b;}
+            
+//            static void addClick()
+//            {
+//                printf("Test::addClick() \n");
+//            }
+            
+        };
         class Shape {
         public:
             Shape() {
