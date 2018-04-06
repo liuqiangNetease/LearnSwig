@@ -2680,13 +2680,10 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_base__Circle swig_types[0]
-#define SWIGTYPE_p_base__Shape swig_types[1]
-#define SWIGTYPE_p_base__ShapeOwner swig_types[2]
-#define SWIGTYPE_p_base__Square swig_types[3]
-#define SWIGTYPE_p_base__Test swig_types[4]
-static swig_type_info *swig_types[6];
-static swig_module_info swig_module = {swig_types, 5, 0, 0, 0, 0};
+#define SWIGTYPE_p_base__Shape swig_types[0]
+#define SWIGTYPE_p_base__Test swig_types[1]
+static swig_type_info *swig_types[3];
+static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2708,13 +2705,22 @@ typedef struct{} LANGUAGE_OBJ;
 
     int _Test_static_addClick( lua_State * L )
     {
-        printf("addClick()\n");
+        printf("Test::addClick()\n");
         return 0;
     }
+
+int _ButtonWrap_static_addClick( lua_State * L )
+{
+    printf("ButtonWrap::addClick()\n");
+    return 0;
+}
+
+
 
 
     //header
 //    #undef SWIG_LUA_MODULE_GLOBAL
+    #include "LuaUtil.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -2813,6 +2819,23 @@ static swig_lua_namespace swig_Test_Sf_SwigStatic = {
 static swig_lua_class *swig_Test_bases[] = {0};
 static const char *swig_Test_base_names[] = {0};
 static swig_lua_class _wrap_class_Test = { "Test", "Test", &SWIGTYPE_p_base__Test,_proxy__wrap_new_Test, swig_delete_Test, swig_Test_methods, swig_Test_attributes, &swig_Test_Sf_SwigStatic, swig_Test_meta, swig_Test_bases, swig_Test_base_names };
+
+static int _wrap_new_Shape(lua_State* L) {
+  int SWIG_arg = 0;
+  base::Shape *result = 0 ;
+  
+  SWIG_check_num_args("base::Shape::Shape",0,0)
+  result = (base::Shape *)new base::Shape();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Shape,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
 
 static int _wrap_Shape_x_set(lua_State* L) {
   int SWIG_arg = 0;
@@ -2943,54 +2966,6 @@ fail:
 }
 
 
-static int _wrap_Shape_area(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Shape *arg1 = (base::Shape *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Shape::area",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Shape::area",1,"base::Shape *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Shape,0))){
-    SWIG_fail_ptr("Shape_area",1,SWIGTYPE_p_base__Shape);
-  }
-  
-  result = (double)(arg1)->area();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Shape_perimeter(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Shape *arg1 = (base::Shape *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Shape::perimeter",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Shape::perimeter",1,"base::Shape *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Shape,0))){
-    SWIG_fail_ptr("Shape_perimeter",1,SWIGTYPE_p_base__Shape);
-  }
-  
-  result = (double)(arg1)->perimeter();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
 static int _wrap_Shape_nshapes_set(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -3031,6 +3006,14 @@ static void swig_delete_Shape(void *obj) {
 base::Shape *arg1 = (base::Shape *) obj;
 delete arg1;
 }
+static int _proxy__wrap_new_Shape(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_Shape);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
 static swig_lua_attribute swig_Shape_attributes[] = {
     { "x", _wrap_Shape_x_get, _wrap_Shape_x_set },
     { "y", _wrap_Shape_y_get, _wrap_Shape_y_set },
@@ -3038,8 +3021,6 @@ static swig_lua_attribute swig_Shape_attributes[] = {
 };
 static swig_lua_method swig_Shape_methods[]= {
     { "move", _wrap_Shape_move},
-    { "area", _wrap_Shape_area},
-    { "perimeter", _wrap_Shape_perimeter},
     {0,0}
 };
 static swig_lua_method swig_Shape_meta[] = {
@@ -3070,451 +3051,60 @@ static swig_lua_namespace swig_Shape_Sf_SwigStatic = {
 };
 static swig_lua_class *swig_Shape_bases[] = {0};
 static const char *swig_Shape_base_names[] = {0};
-static swig_lua_class _wrap_class_Shape = { "Shape", "Shape", &SWIGTYPE_p_base__Shape,0, swig_delete_Shape, swig_Shape_methods, swig_Shape_attributes, &swig_Shape_Sf_SwigStatic, swig_Shape_meta, swig_Shape_bases, swig_Shape_base_names };
-
-static int _wrap_new_Circle(lua_State* L) {
-  int SWIG_arg = 0;
-  double arg1 ;
-  base::Circle *result = 0 ;
-  
-  SWIG_check_num_args("base::Circle::Circle",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("base::Circle::Circle",1,"double");
-  arg1 = (double)lua_tonumber(L, 1);
-  result = (base::Circle *)new base::Circle(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Circle,1); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
+static swig_lua_class _wrap_class_Shape = { "Shape", "Shape", &SWIGTYPE_p_base__Shape,_proxy__wrap_new_Shape, swig_delete_Shape, swig_Shape_methods, swig_Shape_attributes, &swig_Shape_Sf_SwigStatic, swig_Shape_meta, swig_Shape_bases, swig_Shape_base_names };
 
 
-static int _wrap_Circle_area(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Circle *arg1 = (base::Circle *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Circle::area",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Circle::area",1,"base::Circle *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Circle,0))){
-    SWIG_fail_ptr("Circle_area",1,SWIGTYPE_p_base__Circle);
-  }
-  
-  result = (double)(arg1)->area();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
+    void LuaScriptAddNativeMethod( lua_State * const L , char const * const class_name, char const * const method_name , lua_CFunction fn )
+    {
+        SWIG_Lua_get_class_registry( L ); // get the registry
+        lua_pushstring( L , class_name ); // get the name
+        lua_rawget( L , -2 ); // get the metatable itself
+        lua_remove( L , -2 ); // tidy up (remove registry)
+        
+        // If the metatable is not null, add the method to the ".fn" table
+        if( lua_isnil( L , -1 ) != 1 )
+        {
+            SWIG_Lua_get_table( L , ".fn" );
+            SWIG_Lua_add_function( L , method_name , fn );
+            lua_pop( L , 2 );  // tidy up (remove metatable and ".fn" table)
+        }
+        else
+        {
+            printf("LuaScriptAddNativeMethod error: \"%s\" metatable is not found. Method \"%s\" will not be added\n" , class_name , method_name );
+            return;
+        }
+    }
+    
 
-
-static int _wrap_Circle_perimeter(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Circle *arg1 = (base::Circle *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Circle::perimeter",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Circle::perimeter",1,"base::Circle *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Circle,0))){
-    SWIG_fail_ptr("Circle_perimeter",1,SWIGTYPE_p_base__Circle);
-  }
-  
-  result = (double)(arg1)->perimeter();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static void swig_delete_Circle(void *obj) {
-base::Circle *arg1 = (base::Circle *) obj;
-delete arg1;
-}
-static int _proxy__wrap_new_Circle(lua_State *L) {
-    assert(lua_istable(L,1));
-    lua_pushcfunction(L,_wrap_new_Circle);
-    assert(!lua_isnil(L,-1));
-    lua_replace(L,1); /* replace our table with real constructor */
-    lua_call(L,lua_gettop(L)-1,1);
-    return 1;
-}
-static swig_lua_attribute swig_Circle_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_method swig_Circle_methods[]= {
-    { "area", _wrap_Circle_area},
-    { "perimeter", _wrap_Circle_perimeter},
-    {0,0}
-};
-static swig_lua_method swig_Circle_meta[] = {
-    {0,0}
-};
-
-static swig_lua_attribute swig_Circle_Sf_SwigStatic_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_const_info swig_Circle_Sf_SwigStatic_constants[]= {
-    {0,0,0,0,0,0}
-};
-static swig_lua_method swig_Circle_Sf_SwigStatic_methods[]= {
-    {0,0}
-};
-static swig_lua_class* swig_Circle_Sf_SwigStatic_classes[]= {
-    0
-};
-
-static swig_lua_namespace swig_Circle_Sf_SwigStatic = {
-    "Circle",
-    swig_Circle_Sf_SwigStatic_methods,
-    swig_Circle_Sf_SwigStatic_attributes,
-    swig_Circle_Sf_SwigStatic_constants,
-    swig_Circle_Sf_SwigStatic_classes,
-    0
-};
-static swig_lua_class *swig_Circle_bases[] = {0,0};
-static const char *swig_Circle_base_names[] = {"base::Shape *",0};
-static swig_lua_class _wrap_class_Circle = { "Circle", "Circle", &SWIGTYPE_p_base__Circle,_proxy__wrap_new_Circle, swig_delete_Circle, swig_Circle_methods, swig_Circle_attributes, &swig_Circle_Sf_SwigStatic, swig_Circle_meta, swig_Circle_bases, swig_Circle_base_names };
-
-static int _wrap_new_Square(lua_State* L) {
-  int SWIG_arg = 0;
-  double arg1 ;
-  base::Square *result = 0 ;
-  
-  SWIG_check_num_args("base::Square::Square",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("base::Square::Square",1,"double");
-  arg1 = (double)lua_tonumber(L, 1);
-  result = (base::Square *)new base::Square(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Square,1); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Square_area(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Square *arg1 = (base::Square *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Square::area",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Square::area",1,"base::Square *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Square,0))){
-    SWIG_fail_ptr("Square_area",1,SWIGTYPE_p_base__Square);
-  }
-  
-  result = (double)(arg1)->area();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_Square_perimeter(lua_State* L) {
-  int SWIG_arg = 0;
-  base::Square *arg1 = (base::Square *) 0 ;
-  double result;
-  
-  SWIG_check_num_args("base::Square::perimeter",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::Square::perimeter",1,"base::Square *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__Square,0))){
-    SWIG_fail_ptr("Square_perimeter",1,SWIGTYPE_p_base__Square);
-  }
-  
-  result = (double)(arg1)->perimeter();
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static void swig_delete_Square(void *obj) {
-base::Square *arg1 = (base::Square *) obj;
-delete arg1;
-}
-static int _proxy__wrap_new_Square(lua_State *L) {
-    assert(lua_istable(L,1));
-    lua_pushcfunction(L,_wrap_new_Square);
-    assert(!lua_isnil(L,-1));
-    lua_replace(L,1); /* replace our table with real constructor */
-    lua_call(L,lua_gettop(L)-1,1);
-    return 1;
-}
-static swig_lua_attribute swig_Square_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_method swig_Square_methods[]= {
-    { "area", _wrap_Square_area},
-    { "perimeter", _wrap_Square_perimeter},
-    {0,0}
-};
-static swig_lua_method swig_Square_meta[] = {
-    {0,0}
-};
-
-static swig_lua_attribute swig_Square_Sf_SwigStatic_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_const_info swig_Square_Sf_SwigStatic_constants[]= {
-    {0,0,0,0,0,0}
-};
-static swig_lua_method swig_Square_Sf_SwigStatic_methods[]= {
-    {0,0}
-};
-static swig_lua_class* swig_Square_Sf_SwigStatic_classes[]= {
-    0
-};
-
-static swig_lua_namespace swig_Square_Sf_SwigStatic = {
-    "Square",
-    swig_Square_Sf_SwigStatic_methods,
-    swig_Square_Sf_SwigStatic_attributes,
-    swig_Square_Sf_SwigStatic_constants,
-    swig_Square_Sf_SwigStatic_classes,
-    0
-};
-static swig_lua_class *swig_Square_bases[] = {0,0};
-static const char *swig_Square_base_names[] = {"base::Shape *",0};
-static swig_lua_class _wrap_class_Square = { "Square", "Square", &SWIGTYPE_p_base__Square,_proxy__wrap_new_Square, swig_delete_Square, swig_Square_methods, swig_Square_attributes, &swig_Square_Sf_SwigStatic, swig_Square_meta, swig_Square_bases, swig_Square_base_names };
-
-static int _wrap_createCircle(lua_State* L) {
-  int SWIG_arg = 0;
-  double arg1 ;
-  base::Circle *result = 0 ;
-  
-  SWIG_check_num_args("base::createCircle",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("base::createCircle",1,"double");
-  arg1 = (double)lua_tonumber(L, 1);
-  result = (base::Circle *)base::createCircle(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Circle,0); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_createSquare(lua_State* L) {
-  int SWIG_arg = 0;
-  double arg1 ;
-  base::Square *result = 0 ;
-  
-  SWIG_check_num_args("base::createSquare",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("base::createSquare",1,"double");
-  arg1 = (double)lua_tonumber(L, 1);
-  result = (base::Square *)base::createSquare(arg1);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Square,0); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_new_ShapeOwner(lua_State* L) {
-  int SWIG_arg = 0;
-  base::ShapeOwner *result = 0 ;
-  
-  SWIG_check_num_args("base::ShapeOwner::ShapeOwner",0,0)
-  result = (base::ShapeOwner *)new base::ShapeOwner();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__ShapeOwner,1); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_ShapeOwner_add(lua_State* L) {
-  int SWIG_arg = 0;
-  base::ShapeOwner *arg1 = (base::ShapeOwner *) 0 ;
-  base::Shape *arg2 = (base::Shape *) 0 ;
-  
-  SWIG_check_num_args("base::ShapeOwner::add",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::ShapeOwner::add",1,"base::ShapeOwner *");
-  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("base::ShapeOwner::add",2,"base::Shape *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__ShapeOwner,0))){
-    SWIG_fail_ptr("ShapeOwner_add",1,SWIGTYPE_p_base__ShapeOwner);
-  }
-  
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_base__Shape,0))){
-    SWIG_fail_ptr("ShapeOwner_add",2,SWIGTYPE_p_base__Shape);
-  }
-  
-  (arg1)->add(arg2);
-  
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_ShapeOwner_get(lua_State* L) {
-  int SWIG_arg = 0;
-  base::ShapeOwner *arg1 = (base::ShapeOwner *) 0 ;
-  int arg2 ;
-  base::Shape *result = 0 ;
-  
-  SWIG_check_num_args("base::ShapeOwner::get",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::ShapeOwner::get",1,"base::ShapeOwner *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("base::ShapeOwner::get",2,"int");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__ShapeOwner,0))){
-    SWIG_fail_ptr("ShapeOwner_get",1,SWIGTYPE_p_base__ShapeOwner);
-  }
-  
-  arg2 = (int)lua_tonumber(L, 2);
-  result = (base::Shape *)(arg1)->get(arg2);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Shape,0); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_ShapeOwner_remove(lua_State* L) {
-  int SWIG_arg = 0;
-  base::ShapeOwner *arg1 = (base::ShapeOwner *) 0 ;
-  int arg2 ;
-  base::Shape *result = 0 ;
-  
-  SWIG_check_num_args("base::ShapeOwner::remove",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("base::ShapeOwner::remove",1,"base::ShapeOwner *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("base::ShapeOwner::remove",2,"int");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_base__ShapeOwner,0))){
-    SWIG_fail_ptr("ShapeOwner_remove",1,SWIGTYPE_p_base__ShapeOwner);
-  }
-  
-  arg2 = (int)lua_tonumber(L, 2);
-  result = (base::Shape *)(arg1)->remove(arg2);
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_base__Shape,0); SWIG_arg++; 
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static void swig_delete_ShapeOwner(void *obj) {
-base::ShapeOwner *arg1 = (base::ShapeOwner *) obj;
-delete arg1;
-}
-static int _proxy__wrap_new_ShapeOwner(lua_State *L) {
-    assert(lua_istable(L,1));
-    lua_pushcfunction(L,_wrap_new_ShapeOwner);
-    assert(!lua_isnil(L,-1));
-    lua_replace(L,1); /* replace our table with real constructor */
-    lua_call(L,lua_gettop(L)-1,1);
-    return 1;
-}
-static swig_lua_attribute swig_ShapeOwner_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_method swig_ShapeOwner_methods[]= {
-    { "add", _wrap_ShapeOwner_add},
-    { "get", _wrap_ShapeOwner_get},
-    { "remove", _wrap_ShapeOwner_remove},
-    {0,0}
-};
-static swig_lua_method swig_ShapeOwner_meta[] = {
-    {0,0}
-};
-
-static swig_lua_attribute swig_ShapeOwner_Sf_SwigStatic_attributes[] = {
-    {0,0,0}
-};
-static swig_lua_const_info swig_ShapeOwner_Sf_SwigStatic_constants[]= {
-    {0,0,0,0,0,0}
-};
-static swig_lua_method swig_ShapeOwner_Sf_SwigStatic_methods[]= {
-    {0,0}
-};
-static swig_lua_class* swig_ShapeOwner_Sf_SwigStatic_classes[]= {
-    0
-};
-
-static swig_lua_namespace swig_ShapeOwner_Sf_SwigStatic = {
-    "ShapeOwner",
-    swig_ShapeOwner_Sf_SwigStatic_methods,
-    swig_ShapeOwner_Sf_SwigStatic_attributes,
-    swig_ShapeOwner_Sf_SwigStatic_constants,
-    swig_ShapeOwner_Sf_SwigStatic_classes,
-    0
-};
-static swig_lua_class *swig_ShapeOwner_bases[] = {0};
-static const char *swig_ShapeOwner_base_names[] = {0};
-static swig_lua_class _wrap_class_ShapeOwner = { "ShapeOwner", "ShapeOwner", &SWIGTYPE_p_base__ShapeOwner,_proxy__wrap_new_ShapeOwner, swig_delete_ShapeOwner, swig_ShapeOwner_methods, swig_ShapeOwner_attributes, &swig_ShapeOwner_Sf_SwigStatic, swig_ShapeOwner_meta, swig_ShapeOwner_bases, swig_ShapeOwner_base_names };
-
-
-//    static int _wrap_new_Test(lua_State* L) {
-//        return 1;
-//    }
-//    
-//    
-//    static void swig_delete_Test(void *obj) {
-//       
-//    }
-//    static int _proxy__wrap_new_Test(lua_State *L) {
-//        assert(lua_istable(L,1));
-//        lua_pushcfunction(L,_wrap_new_Test);
-//        assert(!lua_isnil(L,-1));
-//        lua_replace(L,1); /* replace our table with real constructor */
-//        lua_call(L,lua_gettop(L)-1,1);
-//        return 1;
-//    }
-
+    
+    void LuaScriptAddNativeStaticMethod
+    ( lua_State * const L
+     , char const * const class_name
+     , char const * const method_name
+     , lua_CFunction fn )
+    {
+        SWIG_Lua_get_table( L , class_name );
+        if( lua_isnil( L , -1 ) == 1 )
+        {
+            lua_pop( L , 1 );
+            
+            lua_pushstring(L, class_name);
+            lua_createtable( L , 0 , 0 );
+            
+            lua_rawset(L, -3);
+            
+            SWIG_Lua_get_table( L , class_name );
+            
+            SWIG_Lua_add_function( L , method_name , fn );
+            lua_pop(L, 1);
+        }
+        else
+        {
+            SWIG_Lua_add_function( L , method_name , fn );
+            lua_pop(L, 1);
+        }
+    }
+    
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     { "Shape_nshapes", _wrap_Shape_nshapes_get, _wrap_Shape_nshapes_set },
     {0,0,0}
@@ -3523,17 +3113,12 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
-    { "createCircle", _wrap_createCircle},
-    { "createSquare", _wrap_createSquare},
     { "Test_addClick",_Test_static_addClick},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
 &_wrap_class_Test,
 &_wrap_class_Shape,
-&_wrap_class_Circle,
-&_wrap_class_Square,
-&_wrap_class_ShapeOwner,
     0
 };
 static swig_lua_namespace* swig_SwigModule_namespaces[] = {
@@ -3554,37 +3139,19 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_base__SquareTo_p_base__Shape(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((base::Shape *)  ((base::Square *) x));
-}
-static void *_p_base__CircleTo_p_base__Shape(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((base::Shape *)  ((base::Circle *) x));
-}
-static swig_type_info _swigt__p_base__Circle = {"_p_base__Circle", "base::Circle *", 0, 0, (void*)&_wrap_class_Circle, 0};
 static swig_type_info _swigt__p_base__Shape = {"_p_base__Shape", "base::Shape *", 0, 0, (void*)&_wrap_class_Shape, 0};
-static swig_type_info _swigt__p_base__ShapeOwner = {"_p_base__ShapeOwner", "base::ShapeOwner *", 0, 0, (void*)&_wrap_class_ShapeOwner, 0};
-static swig_type_info _swigt__p_base__Square = {"_p_base__Square", "base::Square *", 0, 0, (void*)&_wrap_class_Square, 0};
 static swig_type_info _swigt__p_base__Test = {"_p_base__Test", "base::Test *", 0, 0, (void*)&_wrap_class_Test, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_base__Circle,
   &_swigt__p_base__Shape,
-  &_swigt__p_base__ShapeOwner,
-  &_swigt__p_base__Square,
   &_swigt__p_base__Test,
 };
 
-static swig_cast_info _swigc__p_base__Circle[] = {  {&_swigt__p_base__Circle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_base__Shape[] = {  {&_swigt__p_base__Shape, 0, 0, 0},  {&_swigt__p_base__Square, _p_base__SquareTo_p_base__Shape, 0, 0},  {&_swigt__p_base__Circle, _p_base__CircleTo_p_base__Shape, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_base__ShapeOwner[] = {  {&_swigt__p_base__ShapeOwner, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_base__Square[] = {  {&_swigt__p_base__Square, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_base__Shape[] = {  {&_swigt__p_base__Shape, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_base__Test[] = {  {&_swigt__p_base__Test, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_base__Circle,
   _swigc__p_base__Shape,
-  _swigc__p_base__ShapeOwner,
-  _swigc__p_base__Square,
   _swigc__p_base__Test,
 };
 
@@ -3917,29 +3484,8 @@ const char* SWIG_LUACODE=
 
 void SWIG_init_user(lua_State* L)
 {
-  static swig_lua_method M_swig_Test_Sf_SwigStatic_methods[]= {
-    {
-      "add", _Test_static_addClick
-    },
-    {
-      0,0
-    }
-  };
-  static swig_lua_namespace M_swig_Test_Sf_SwigStatic = {
-    "Test",
-    M_swig_Test_Sf_SwigStatic_methods,
-    swig_Test_Sf_SwigStatic_attributes,
-    swig_Test_Sf_SwigStatic_constants,
-    swig_Test_Sf_SwigStatic_classes,
-    0
-  };
-  
-  
-  SWIG_Lua_namespace_register(L, &M_swig_Test_Sf_SwigStatic, 1);
-  
-  
-  /* exec Lua code if applicable */
-  SWIG_Lua_dostring(L,SWIG_LUACODE);
+  LuaScriptAddNativeStaticMethod( L, "ButtonWrap" , "addClick" , _ButtonWrap_static_addClick );
+    LuaScriptAddNativeStaticMethod( L, "Test" , "addClick" , _Test_static_addClick );
   
   /* exec Lua code if applicable */
   SWIG_Lua_dostring(L,SWIG_LUACODE);

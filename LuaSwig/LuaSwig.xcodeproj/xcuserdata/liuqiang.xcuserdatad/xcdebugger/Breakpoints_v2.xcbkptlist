@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LuaSwig/class/wrap_example.cpp"
-            timestampString = "544287086.9053119"
+            timestampString = "544592515.487527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3948"
-            endingLineNumber = "3948">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LuaSwig/class/wrap_example.cpp"
-            timestampString = "544287086.9053119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "3889"
-            endingLineNumber = "3889"
-            landmarkName = "SWIG_init(lua_State* L)"
-            landmarkType = "9">
+            startingLineNumber = "3951"
+            endingLineNumber = "3951">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -123,10 +123,10 @@
 		A14BFF4D203B2CB800569B00 /* lzio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lzio.c; sourceTree = "<group>"; };
 		A14BFF4E203B2CB800569B00 /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		A14BFF79203B3A8500569B00 /* wrap_example.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wrap_example.cpp; sourceTree = "<group>"; };
+		A19B77152075CCE400782BFF /* runme.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = runme.lua; path = "../../../../../Library/Developer/Xcode/DerivedData/Swig-absicjgrwnwdubdfjycvdtsvgiqh/Build/Products/Debug/runme.lua"; sourceTree = "<group>"; };
 		A1C1CC48207044B800C50219 /* LuaUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LuaUtil.h; sourceTree = "<group>"; };
 		A1C1CC49207044CD00C50219 /* LuaUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LuaUtil.cpp; sourceTree = "<group>"; };
 		A1D27786203C1B3500A899D5 /* example.i */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c.preprocessed; path = example.i; sourceTree = "<group>"; };
-		A1D8FCBA206F16EE0068605F /* runme.lua */ = {isa = PBXFileReference; lastKnownFileType = text; name = runme.lua; path = "../../../../../Library/Developer/Xcode/DerivedData/LuaSwig-bnryjkksvatgawganoytcerzsciq/Build/Products/Debug/runme.lua"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,7 @@
 			children = (
 				A14BFF03203B2C3500569B00 /* LuaSwig */,
 				A14BFF02203B2C3500569B00 /* Products */,
-				A1D8FCBA206F16EE0068605F /* runme.lua */,
+				A19B77152075CCE400782BFF /* runme.lua */,
 			);
 			sourceTree = "<group>";
 		};
